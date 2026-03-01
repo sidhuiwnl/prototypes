@@ -33,11 +33,18 @@ func handleConnection(conn net.Conn) {
 
 	fmt.Println("---- Incoming Request ----")
 	request := string(buffer[:n])
-fmt.Println(strings.Split(request, "\n")[0])
+	// fmt.Println(strings.Split(request, "\n"))
+
+	data := strings.Split(request, "\n")[0]
+
+	parts := strings.Split(data, " ")
+
+	fmt.Println("The method",parts[0])
+	fmt.Println("The path",parts[1])
 
 	response := "HTTP/1.1 200 OK\r\n" +
 		"Content-Type: text/plain\r\n" +
-		"Content-Length: 40\r\n" +
+		"Content-Length: 13\r\n" +
 		"Connection: close\r\n" +
 		"\r\n" +
 		"Hello, World!"
